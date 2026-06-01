@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Pedidos - Domidona</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="top-bar no-print">
+        <div class="logo">
+            <h1>Gestão 360 Domidona - Pedidos</h1>
+        </div>
+        <div class="global-controls">
+            <div class="control-group">
+                <label for="order-multiplier">Quantidade de Pedidos:</label>
+                <input type="number" id="order-multiplier" value="1" min="1">
+            </div>
+            <button id="btn-print" class="btn-primary">🖨️ IMPRIMIR PEDIDO</button>
+        </div>
+    </header>
+
+    <div class="print-header only-print">
+        <h1>Pedido de Compra - Domidona</h1>
+        <p>Data: <span id="print-date"></span></p>
+        <p>Multiplicador de Pedidos: <span id="print-multiplier">1</span>x</p>
+    </div>
+
+    <main>
+        <section class="summary-section">
+            <h2>Total Geral do Pedido: <span id="grand-total">0</span> pares</h2>
+        </section>
+
+        <section id="skus-container" class="skus-grid">
+            </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
