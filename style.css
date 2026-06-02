@@ -384,3 +384,26 @@ body {
     body.printing-single .sku-card:not(.print-active) { display: none !important; }
     .size-input { border: none; border-bottom: 1px solid #ccc; border-radius: 0; background: transparent; }
 }
+
+/* ===== ESTILOS PARA OS QUADRADOS DE DATA DE ENTREGA ===== */
+.squares-row {
+    display: flex;
+    gap: 12px;
+    margin-top: 6px;
+    flex-wrap: wrap;
+}
+
+.date-box {
+    width: 100px;
+    height: 35px;
+    border: 1px solid var(--border-hover);
+    border-radius: 4px;
+    background: transparent;
+}
+
+/* Força os quadrados a ficarem bem visíveis na hora de imprimir */
+@media print {
+    .date-box {
+        border: 1.5px solid #000;
+    }
+}
