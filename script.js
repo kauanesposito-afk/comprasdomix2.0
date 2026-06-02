@@ -31,7 +31,7 @@ const state = {
     searchTerm: ''
 };
 
-// Descobrir Categorias Dinamicamente com base no nome
+// Descobrir Categorias Dinamicamente
 const categories = ['all'];
 skusData.forEach(sku => {
     const nomeLower = sku.name.toLowerCase();
@@ -106,7 +106,6 @@ function renderSkus() {
             `;
         });
 
-        // Resolve Imagem Vazia
         const imgSrc = sku.image ? sku.image : 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7';
 
         card.innerHTML = `
@@ -122,17 +121,22 @@ function renderSkus() {
             <div class="sku-footer no-print">
                 <div class="calc-row">
                     <span>Grade: <strong id="grade-${sku.id}">0</strong></span>
-                    <span>Pedidos: <input type="number" class="multiplier-input" data-sku="${sku.id}" value="${state.inputs[sku.id].multiplier}" min="1"></span>
+                    <div class="multiplier-wrapper">
+                        <span>Pedidos:</span>
+                        <input type="number" class="multiplier-input" data-sku="${sku.id}" value="${state.inputs[sku.id].multiplier}" min="1">
+                    </div>
                     <span>Total: <strong class="final-total" id="total-${sku.id}">0</strong></span>
                 </div>
                 <button class="btn-print-single" data-sku="${sku.id}">🖨️ Imprimir Apenas Esta Ref.</button>
             </div>
             
-            <!-- Resumo visível apenas no papel -->
             <div class="only-print" style="margin-top: 1rem;">
                 <strong>Grade inserida:</strong> <span id="print-grade-${sku.id}">0</span> pares<br>
                 <strong>Qtd. de Pedidos passados:</strong> <span id="print-mult-${sku.id}">1</span>x<br>
-                <strong>TOTAL GERAL DESTE ITEM: <span id="print-total-${sku.id}">0</span> pares</strong>
+                <strong style="font-size: 1.1rem;">TOTAL GERAL DESTE ITEM: <span id="print-total-${sku.id}">0</span> pares</strong>
+                
+                <!-- Quadrados de data -->
+                <div id="print-squares-${sku.id}"></div>
             </div>
         `;
         container.appendChild(card);
@@ -143,13 +147,11 @@ function renderSkus() {
 
 // Eventos Globais
 function setupEventListeners() {
-    // Pesquisa
     searchInput.addEventListener('input', (e) => {
         state.searchTerm = e.target.value.toLowerCase();
         renderSkus();
     });
 
-    // Inputs de Grade e Multiplicador
     container.addEventListener('input', (e) => {
         const skuId = e.target.dataset.sku;
         
@@ -163,13 +165,11 @@ function setupEventListeners() {
         recalculateAll();
     });
 
-    // Imprimir Todos
     document.getElementById('btn-print-all').addEventListener('click', () => {
         document.body.classList.remove('printing-single');
         window.print();
     });
 
-    // Imprimir Único
     container.addEventListener('click', (e) => {
         if (e.target.classList.contains('btn-print-single')) {
             const skuId = e.target.dataset.sku;
@@ -179,7 +179,6 @@ function setupEventListeners() {
             document.body.classList.add('printing-single');
             window.print();
             
-            // Remove a classe após abrir a janela de impressão
             setTimeout(() => document.body.classList.remove('printing-single'), 1000);
         }
     });
@@ -194,24 +193,32 @@ function recalculateAll() {
         if(!inputData) return;
 
         let gradePairs = 0;
-        
-        // Soma os pares digitados na grade
         for (const size in inputData.sizes) {
             gradePairs += inputData.sizes[size];
         }
 
         const skuFinalTotal = gradePairs * inputData.multiplier;
         
-        // Atualiza elementos na tela se existirem
         const elGrade = document.getElementById(`grade-${sku.id}`);
         if(elGrade) {
             elGrade.textContent = gradePairs;
             document.getElementById(`total-${sku.id}`).textContent = skuFinalTotal;
             
-            // Atualiza dados exclusivos da folha impressa
             document.getElementById(`print-grade-${sku.id}`).textContent = gradePairs;
             document.getElementById(`print-mult-${sku.id}`).textContent = inputData.multiplier;
             document.getElementById(`print-total-${sku.id}`).textContent = skuFinalTotal;
+
+            const squaresContainer = document.getElementById(`print-squares-${sku.id}`);
+            if(squaresContainer) {
+                let squaresHTML = '<div style="margin-top: 15px;"><strong style="color: #475569; font-size: 0.9rem;">Datas de Entrega:</strong><div class="squares-row">';
+                
+                for (let i = 0; i < inputData.multiplier; i++) {
+                    squaresHTML += '<div class="date-box"></div>';
+                }
+                
+                squaresHTML += '</div></div>';
+                squaresContainer.innerHTML = squaresHTML;
+            }
         }
 
         grandTotal += skuFinalTotal;
