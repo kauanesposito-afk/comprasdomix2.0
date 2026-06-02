@@ -1,332 +1,223 @@
-/* Variáveis Minimalistas */
-:root {
-    --primary: #c026d3;
-    --primary-light: #fdf4ff;
-    --bg-main: #fafafa;
-    --card-bg: #ffffff;
-    --text-dark: #111827;
-    --text-muted: #6b7280;
-    --border-soft: #e5e7eb;
-    --border-focus: #d1d5db;
-}
+// DADOS DOS PRODUTOS
+const skusData = [
+    { id: "118015125", name: "Sapatilha Feminina Slingback Bico Fino Verniz Marsala", sizes: [34,35,36,37,38,39,40], image: "" },
+    { id: "118015197", name: "Sapatilha Feminina Slingback Bico Fino Verniz Off White", sizes: [34,35,36,37,38,39,40], image: "" },
+    { id: "118005033", name: "Sapatilha Bico Fino Animal Print Dourado", sizes: [34,35,36,37,38,39,40], image: "" },
+    { id: "118005009", name: "Sapatilha Bico Fino Animal Print Preto", sizes: [34,35,36,37,38,39,40], image: "" },
+    { id: "68051033", name: "Sandália Salto Infantil Tiras Laço Ouro Light", sizes: [28,29,30,31,32,33,34,35,36], image: "" },
+    { id: "169012195", name: "Tênis Infantil Cano Alto Casual Strass Preto", sizes: [28,29,30,31,32,33,34,35,36], image: "" },
+    { id: "68051001", name: "Sandália Salto Infantil Tiras Laço Branco", sizes: [28,29,30,31,32,33,34,35,36], image: "" },
+    { id: "68051009", name: "Sandália Salto Infantil Tiras Laço Preto", sizes: [28,29,30,31,32,33,34,35,36], image: "" },
+    { id: "68051041", name: "Sandália Salto Infantil Tiras Laço (Rosa)", sizes: [28,29,30,31,32,33,34,35,36], image: "" },
+    { id: "135003172", name: "Scarpin Salto Baixo Verniz Bico Fino (Preto)", sizes: [34,35,36,37,38,39,40], image: "" },
+    { id: "169021368", name: "Tênis Feminino Casual Colorido Refletivo", sizes: [28,29,30,31,32,33,34,35,36], image: "" },
+    { id: "155095009", name: "Tênis Menina Fashion Unicórnio Preto", sizes: [28,29,30,31,32,33,34,35,36], image: "" },
+    { id: "118005041", name: "Sapatilha Bico Fino Animal Print Nude", sizes: [34,35,36,37,38,39,40], image: "" },
+    { id: "135003198", name: "Scarpin Salto Baixo Verniz Bico Fino (Off White)", sizes: [34,35,36,37,38,39,40], image: "" },
+    { id: "169012285", name: "Tênis Infantil Cano Alto Casual Strass Dourado", sizes: [28,29,30,31,32,33,34,35,36], image: "" },
+    { id: "116032121", name: "Sandália Espiral Salto Fino Strass Off White", sizes: [34,35,36,37,38,39,40], image: "" },
+    { id: "147006121", name: "Sandália Salto Médio Grosso Tiras Cruzadas", sizes: [34,35,36,37,38,39,40], image: "" },
+    { id: "162006286", name: "Sandália Feminina Salto Bloco Tiras Elegantes", sizes: [34,35,36,37,38,39,40], image: "" },
+    { id: "155095001", name: "Tênis Menina Fashion Unicórnio Branco", sizes: [28,29,30,31,32,33,34,35,36], image: "" },
+    { id: "135003001", name: "Scarpin Salto Baixo Verniz Bico Fino", sizes: [34,35,36,37,38,39,40], image: "" },
+    { id: "155095041", name: "Tênis Menina Fashion Unicórnio Rosa", sizes: [28,29,30,31,32,33,34,35,36], image: "" },
+    { id: "135003383", name: "Scarpin Salto Baixo Verniz Bico Fino (Branco)", sizes: [34,35,36,37,38,39,40], image: "" }
+];
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-}
+// Estado Principal
+const state = {
+    inputs: {},
+    currentCategory: 'all',
+    searchTerm: ''
+};
 
-body {
-    background-color: var(--bg-main);
-    color: var(--text-dark);
-    -webkit-font-smoothing: antialiased;
-}
-
-/* Cabeçalho */
-.top-bar {
-    background-color: var(--card-bg);
-    padding: 1.2rem 2rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-bottom: 1px solid var(--border-soft);
-}
-
-.logo h1 {
-    font-size: 1.4rem;
-    color: var(--text-dark);
-}
-
-.logo .subtitle {
-    font-size: 0.85rem;
-    color: var(--text-muted);
-}
-
-.btn-primary {
-    background-color: var(--text-dark);
-    color: white;
-    border: none;
-    padding: 0.6rem 1.2rem;
-    font-size: 0.95rem;
-    border-radius: 6px;
-    cursor: pointer;
-    transition: 0.2s ease;
-}
-
-.btn-primary:hover {
-    background-color: var(--primary);
-}
-
-/* Barra de Ferramentas (Pesquisa e Abas) */
-.toolbar {
-    max-width: 1200px;
-    margin: 2rem auto 1rem;
-    padding: 0 1rem;
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
-}
-
-.search-container {
-    position: relative;
-    max-width: 500px;
-}
-
-.search-icon {
-    position: absolute;
-    left: 12px;
-    top: 50%;
-    transform: translateY(-50%);
-    color: var(--text-muted);
-}
-
-#search-input {
-    width: 100%;
-    padding: 0.8rem 1rem 0.8rem 2.5rem;
-    border: 1px solid var(--border-focus);
-    border-radius: 8px;
-    font-size: 1rem;
-    outline: none;
-    transition: 0.2s;
-}
-
-#search-input:focus {
-    border-color: var(--primary);
-    box-shadow: 0 0 0 3px var(--primary-light);
-}
-
-.category-tabs {
-    display: flex;
-    gap: 0.5rem;
-    flex-wrap: wrap;
-    border-bottom: 1px solid var(--border-soft);
-    padding-bottom: 0.5rem;
-}
-
-.tab-btn {
-    background: transparent;
-    border: none;
-    padding: 0.5rem 1rem;
-    font-size: 0.95rem;
-    color: var(--text-muted);
-    cursor: pointer;
-    border-radius: 20px;
-    transition: 0.2s;
-}
-
-.tab-btn:hover {
-    background-color: var(--border-soft);
-    color: var(--text-dark);
-}
-
-.tab-btn.active {
-    background-color: var(--primary-light);
-    color: var(--primary);
-    font-weight: 600;
-}
-
-/* Resumo */
-.summary-section {
-    max-width: 1200px;
-    margin: 0 auto 1.5rem;
-    padding: 0 1rem;
-    text-align: right;
-    font-size: 1.2rem;
-    color: var(--text-muted);
-}
-
-.summary-section strong {
-    color: var(--primary);
-    font-size: 1.5rem;
-}
-
-/* Grid de Produtos */
-.skus-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(450px, 1fr));
-    gap: 1.5rem;
-    max-width: 1200px;
-    margin: 0 auto 3rem;
-    padding: 0 1rem;
-}
-
-/* Cartão Minimalista */
-.sku-card {
-    background: var(--card-bg);
-    border: 1px solid var(--border-soft);
-    border-radius: 12px;
-    padding: 1.5rem;
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
-    transition: transform 0.2s, box-shadow 0.2s;
-}
-
-.sku-card:hover {
-    border-color: var(--border-focus);
-    box-shadow: 0 4px 20px rgba(0,0,0,0.03);
-}
-
-.sku-header {
-    display: flex;
-    gap: 1.2rem;
-    align-items: center;
-}
-
-.sku-image {
-    width: 70px;
-    height: 70px;
-    object-fit: cover;
-    border-radius: 8px;
-    background-color: var(--bg-main);
-}
-
-.sku-info h3 {
-    font-size: 1.1rem;
-    color: var(--text-dark);
-    margin-bottom: 0.2rem;
-}
-
-.sku-info p {
-    color: var(--text-muted);
-    font-size: 0.85rem;
-    line-height: 1.3;
-}
-
-/* Grade de Inputs Minimalista */
-.size-grid {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-}
-
-.size-item {
-    display: flex;
-    flex-direction: column;
-    width: 45px;
-}
-
-.size-label {
-    text-align: center;
-    font-size: 0.85rem;
-    color: var(--text-muted);
-    margin-bottom: 0.2rem;
-}
-
-.size-input {
-    width: 100%;
-    border: 1px solid var(--border-soft);
-    border-radius: 4px;
-    padding: 0.4rem 0;
-    text-align: center;
-    outline: none;
-    font-size: 0.95rem;
-    transition: 0.2s;
-}
-
-.size-input:focus {
-    border-color: var(--primary);
-    background-color: var(--primary-light);
-}
-
-/* Rodapé do Cartão (Cálculos e Botão) */
-.sku-footer {
-    margin-top: auto;
-    padding-top: 1.5rem;
-    border-top: 1px dashed var(--border-soft);
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-}
-
-.calc-row {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: var(--bg-main);
-    padding: 0.8rem 1rem;
-    border-radius: 8px;
-    font-size: 0.95rem;
-}
-
-.calc-row .multiplier-input {
-    width: 60px;
-    padding: 0.3rem;
-    text-align: center;
-    border: 1px solid var(--border-focus);
-    border-radius: 4px;
-    margin: 0 0.5rem;
-    font-weight: bold;
-}
-
-.calc-row .final-total {
-    color: var(--primary);
-    font-size: 1.1rem;
-}
-
-.btn-print-single {
-    width: 100%;
-    background: transparent;
-    border: 1px solid var(--border-focus);
-    color: var(--text-dark);
-    padding: 0.6rem;
-    border-radius: 6px;
-    cursor: pointer;
-    font-size: 0.9rem;
-    transition: 0.2s;
-}
-
-.btn-print-single:hover {
-    border-color: var(--primary);
-    color: var(--primary);
-}
-
-.only-print { display: none; }
-
-/* ===== REGRAS DE IMPRESSÃO ===== */
-@media print {
-    @page { margin: 1cm; size: A4 portrait; }
+// Descobrir Categorias Dinamicamente com base no nome
+const categories = ['all'];
+skusData.forEach(sku => {
+    const nomeLower = sku.name.toLowerCase();
+    let cat = 'Outros';
+    if (nomeLower.includes('sapatilha')) cat = 'Sapatilhas';
+    else if (nomeLower.includes('sandália')) cat = 'Sandálias';
+    else if (nomeLower.includes('scarpin')) cat = 'Scarpins';
+    else if (nomeLower.includes('tênis')) cat = 'Tênis';
     
-    body { background: white; }
-    .no-print { display: none !important; }
-    
-    .only-print {
-        display: block;
-        margin-bottom: 2rem;
-        border-bottom: 2px solid #000;
-        padding-bottom: 1rem;
-    }
+    sku.category = cat;
+    if (!categories.includes(cat)) categories.push(cat);
+});
 
-    .skus-grid {
-        display: block;
-        padding: 0;
-    }
+// Elementos DOM
+const container = document.getElementById('skus-container');
+const tabsContainer = document.getElementById('category-tabs');
+const searchInput = document.getElementById('search-input');
+const grandTotalEl = document.getElementById('grand-total');
 
-    .sku-card {
-        border: 1px solid #000;
-        margin-bottom: 1.5rem;
-        page-break-inside: avoid;
-    }
-
-    /* Se estiver imprimindo um item único, oculta os outros */
-    body.printing-single .sku-card:not(.print-active) {
-        display: none !important;
-    }
-
-    .size-input {
-        border: none;
-        border-bottom: 1px solid #000;
-        border-radius: 0;
-    }
-
-    .calc-row {
-        background: transparent;
-        border: 1px solid #000;
-    }
-
-    .multiplier-input {
-        border: none;
-        border-bottom: 1px solid #000;
-    }
+function init() {
+    setupCategories();
+    renderSkus();
+    setupEventListeners();
+    document.getElementById('print-date').textContent = new Date().toLocaleDateString('pt-BR');
 }
+
+// Renderizar Abas
+function setupCategories() {
+    tabsContainer.innerHTML = '';
+    categories.forEach(cat => {
+        const btn = document.createElement('button');
+        btn.className = `tab-btn ${cat === 'all' ? 'active' : ''}`;
+        btn.textContent = cat === 'all' ? 'Todas as Referências' : cat;
+        btn.dataset.cat = cat;
+        
+        btn.addEventListener('click', () => {
+            document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            state.currentCategory = cat;
+            renderSkus();
+        });
+        
+        tabsContainer.appendChild(btn);
+    });
+}
+
+// Renderizar Cartões
+function renderSkus() {
+    container.innerHTML = '';
+    
+    const filteredSkus = skusData.filter(sku => {
+        const matchCat = state.currentCategory === 'all' || sku.category === state.currentCategory;
+        const matchSearch = sku.id.includes(state.searchTerm) || sku.name.toLowerCase().includes(state.searchTerm);
+        return matchCat && matchSearch;
+    });
+
+    filteredSkus.forEach(sku => {
+        if (!state.inputs[sku.id]) state.inputs[sku.id] = { sizes: {}, multiplier: 1 };
+
+        const card = document.createElement('div');
+        card.className = 'sku-card';
+        card.id = `card-${sku.id}`;
+
+        let sizesHTML = '';
+        sku.sizes.forEach(size => {
+            const val = state.inputs[sku.id].sizes[size] || '';
+            sizesHTML += `
+                <div class="size-item">
+                    <div class="size-label">${size}</div>
+                    <input type="number" class="size-input" data-sku="${sku.id}" data-size="${size}" min="0" placeholder="0" value="${val}">
+                </div>
+            `;
+        });
+
+        // Resolve Imagem Vazia
+        const imgSrc = sku.image ? sku.image : 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7';
+
+        card.innerHTML = `
+            <div class="sku-header">
+                <img src="${imgSrc}" class="sku-image" alt="Produto">
+                <div class="sku-info">
+                    <h3>SKU: ${sku.id}</h3>
+                    <p>${sku.name}</p>
+                </div>
+            </div>
+            <div class="size-grid">${sizesHTML}</div>
+            
+            <div class="sku-footer no-print">
+                <div class="calc-row">
+                    <span>Grade: <strong id="grade-${sku.id}">0</strong></span>
+                    <span>Pedidos: <input type="number" class="multiplier-input" data-sku="${sku.id}" value="${state.inputs[sku.id].multiplier}" min="1"></span>
+                    <span>Total: <strong class="final-total" id="total-${sku.id}">0</strong></span>
+                </div>
+                <button class="btn-print-single" data-sku="${sku.id}">🖨️ Imprimir Apenas Esta Ref.</button>
+            </div>
+            
+            <!-- Resumo visível apenas no papel -->
+            <div class="only-print" style="margin-top: 1rem;">
+                <strong>Grade inserida:</strong> <span id="print-grade-${sku.id}">0</span> pares<br>
+                <strong>Qtd. de Pedidos passados:</strong> <span id="print-mult-${sku.id}">1</span>x<br>
+                <strong>TOTAL GERAL DESTE ITEM: <span id="print-total-${sku.id}">0</span> pares</strong>
+            </div>
+        `;
+        container.appendChild(card);
+    });
+
+    recalculateAll();
+}
+
+// Eventos Globais
+function setupEventListeners() {
+    // Pesquisa
+    searchInput.addEventListener('input', (e) => {
+        state.searchTerm = e.target.value.toLowerCase();
+        renderSkus();
+    });
+
+    // Inputs de Grade e Multiplicador
+    container.addEventListener('input', (e) => {
+        const skuId = e.target.dataset.sku;
+        
+        if (e.target.classList.contains('size-input')) {
+            state.inputs[skuId].sizes[e.target.dataset.size] = parseInt(e.target.value) || 0;
+        } 
+        else if (e.target.classList.contains('multiplier-input')) {
+            let val = parseInt(e.target.value);
+            state.inputs[skuId].multiplier = isNaN(val) || val < 1 ? 1 : val;
+        }
+        recalculateAll();
+    });
+
+    // Imprimir Todos
+    document.getElementById('btn-print-all').addEventListener('click', () => {
+        document.body.classList.remove('printing-single');
+        window.print();
+    });
+
+    // Imprimir Único
+    container.addEventListener('click', (e) => {
+        if (e.target.classList.contains('btn-print-single')) {
+            const skuId = e.target.dataset.sku;
+            document.querySelectorAll('.sku-card').forEach(c => c.classList.remove('print-active'));
+            document.getElementById(`card-${skuId}`).classList.add('print-active');
+            
+            document.body.classList.add('printing-single');
+            window.print();
+            
+            // Remove a classe após abrir a janela de impressão
+            setTimeout(() => document.body.classList.remove('printing-single'), 1000);
+        }
+    });
+}
+
+// Cálculos
+function recalculateAll() {
+    let grandTotal = 0;
+
+    skusData.forEach(sku => {
+        const inputData = state.inputs[sku.id];
+        if(!inputData) return;
+
+        let gradePairs = 0;
+        
+        // Soma os pares digitados na grade
+        for (const size in inputData.sizes) {
+            gradePairs += inputData.sizes[size];
+        }
+
+        const skuFinalTotal = gradePairs * inputData.multiplier;
+        
+        // Atualiza elementos na tela se existirem
+        const elGrade = document.getElementById(`grade-${sku.id}`);
+        if(elGrade) {
+            elGrade.textContent = gradePairs;
+            document.getElementById(`total-${sku.id}`).textContent = skuFinalTotal;
+            
+            // Atualiza dados exclusivos da folha impressa
+            document.getElementById(`print-grade-${sku.id}`).textContent = gradePairs;
+            document.getElementById(`print-mult-${sku.id}`).textContent = inputData.multiplier;
+            document.getElementById(`print-total-${sku.id}`).textContent = skuFinalTotal;
+        }
+
+        grandTotal += skuFinalTotal;
+    });
+
+    grandTotalEl.textContent = grandTotal;
+}
+
+init();
