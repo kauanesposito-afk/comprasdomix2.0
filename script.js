@@ -1,11 +1,11 @@
 // DADOS EXTRAÍDOS DO RELATÓRIO DOMIDONA
 // ➔ SUBSTITUA O LINK "image" PELAS FOTOS REAIS DOS SEUS PRODUTOS
 const skusData = [
-    { id: "118015125", name: "Sapatilha Feminina Slingback Bico Fino Verniz Marsala", sizes: [34,35,36,37,38,39,40], image: "https://via.placeholder.com/150/c026d3/ffffff?text=Marsala" },
-    { id: "118015197", name: "Sapatilha Feminina Slingback Bico Fino Verniz Off White", sizes: [34,35,36,37,38,39,40], image: "https://via.placeholder.com/150/c026d3/ffffff?text=OffWhite" },
-    { id: "118005033", name: "Sapatilha Bico Fino Animal Print Dourado", sizes: [34,35,36,37,38,39,40], image: "https://via.placeholder.com/150/c026d3/ffffff?text=Dourado" },
-    { id: "118005009", name: "Sapatilha Bico Fino Animal Print Preto", sizes: [34,35,36,37,38,39,40], image: "https://via.placeholder.com/150/c026d3/ffffff?text=Preto" },
-    { id: "68051033", name: "Sandália Salto Infantil Tiras Laço Ouro Light", sizes: [28,29,30,31,32,33,34,35,36], image: "https://via.placeholder.com/150/c026d3/ffffff?text=Inf+Ouro" },
+    { id: "118015125", name: "Sapatilha Feminina Slingback Bico Fino Verniz Marsala", sizes: [34,35,36,37,38,39,40], image: "https://down-br.img.susercontent.com/file/sg-11134201-7rd49-lvnfruqmb3dzd7.webp" },
+    { id: "118015197", name: "Sapatilha Feminina Slingback Bico Fino Verniz Off White", sizes: [34,35,36,37,38,39,40], image: "https://down-br.img.susercontent.com/file/br-11134207-7r98o-lvnh3husfzza7d.webp" },
+    { id: "118005033", name: "Sapatilha Bico Fino Animal Print Dourado", sizes: [34,35,36,37,38,39,40], image: "https://down-br.img.susercontent.com/file/br-11134207-7qukw-lh9hes8c8jw6a2.webp" },
+    { id: "118005009", name: "Sapatilha Bico Fino Animal Print Preto", sizes: [34,35,36,37,38,39,40], image: "https://down-br.img.susercontent.com/file/br-11134207-7qukw-lh9hes8ce65yd7.webp" },
+    { id: "68051033", name: "Sandália Salto Infantil Tiras Laço Ouro Light", sizes: [28,29,30,31,32,33,34,35,36], image: "https://domidona.fbitsstatic.net/img/p/sandalia-salto-infantil-3-tiras-laco-branco-150565/339786-2.jpg" },
     { id: "169012195", name: "Tênis Infantil Cano Alto Casual Strass Preto", sizes: [28,29,30,31,32,33,34,35,36], image: "https://via.placeholder.com/150/c026d3/ffffff?text=Tenis+Pr" },
     { id: "68051001", name: "Sandália Salto Infantil Tiras Laço Branco", sizes: [28,29,30,31,32,33,34,35,36], image: "https://via.placeholder.com/150/c026d3/ffffff?text=Inf+Branco" },
     { id: "68051009", name: "Sandália Salto Infantil Tiras Laço Preto", sizes: [28,29,30,31,32,33,34,35,36], image: "https://via.placeholder.com/150/c026d3/ffffff?text=Inf+Preto" },
