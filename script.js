@@ -13,7 +13,7 @@ const skusData = [
     { id: "169021368", name: "Tênis Feminino Casual Colorido Refletivo", sizes: [28,29,30,31,32,33,34,35,36], image: "" },
     { id: "155095009", name: "Tênis Menina Fashion Unicórnio Preto", sizes: [28,29,30,31,32,33,34,35,36], image: "" },
     { id: "118005041", name: "Sapatilha Bico Fino Animal Print Nude", sizes: [34,35,36,37,38,39,40], image: "" },
-    { id: "135003198", name: "Scarpin Salto Baixo Verniz Bico Fino (Off White)", sizes: [34,35,36,37,38,39,40], image: "" },
+    { id: "135003198", name: "Scarpin Salto Baixo Verniz Bico Fino Nude", sizes: [34,35,36,37,38,39,40], image: "" },
     { id: "169012285", name: "Tênis Infantil Cano Alto Casual Strass Dourado", sizes: [28,29,30,31,32,33,34,35,36], image: "" },
     { id: "116032121", name: "Sandália Espiral Salto Fino Strass Off White", sizes: [34,35,36,37,38,39,40], image: "" },
     { id: "147006121", name: "Sandália Salto Médio Grosso Tiras Cruzadas", sizes: [34,35,36,37,38,39,40], image: "" },
