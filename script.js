@@ -1,153 +1,332 @@
-// DADOS EXTRAÍDOS DO RELATÓRIO DOMIDONA
-// ➔ SUBSTITUA O LINK "image" PELAS FOTOS REAIS DOS SEUS PRODUTOS
-const skusData = [
-    { id: "118015125", name: "Sapatilha Feminina Slingback Bico Fino Verniz Marsala", sizes: [34,35,36,37,38,39,40], image: "https://down-br.img.susercontent.com/file/sg-11134201-7rd49-lvnfruqmb3dzd7.webp" },
-    { id: "118015197", name: "Sapatilha Feminina Slingback Bico Fino Verniz Off White", sizes: [34,35,36,37,38,39,40], image: "https://down-br.img.susercontent.com/file/br-11134207-7r98o-lvnh3husfzza7d.webp" },
-    { id: "118005033", name: "Sapatilha Bico Fino Animal Print Dourado", sizes: [34,35,36,37,38,39,40], image: "https://down-br.img.susercontent.com/file/br-11134207-7qukw-lh9hes8c8jw6a2.webp" },
-    { id: "118005009", name: "Sapatilha Bico Fino Animal Print Preto", sizes: [34,35,36,37,38,39,40], image: "https://down-br.img.susercontent.com/file/br-11134207-7qukw-lh9hes8ce65yd7.webp" },
-    { id: "68051033", name: "Sandália Salto Infantil Tiras Laço Ouro Light", sizes: [28,29,30,31,32,33,34,35,36], image: "https://domidona.fbitsstatic.net/img/p/sandalia-salto-infantil-3-tiras-laco-branco-150565/339786-2.jpg" },
-    { id: "169012195", name: "Tênis Infantil Cano Alto Casual Strass Preto", sizes: [28,29,30,31,32,33,34,35,36], image: "https://via.placeholder.com/150/c026d3/ffffff?text=Tenis+Pr" },
-    { id: "68051001", name: "Sandália Salto Infantil Tiras Laço Branco", sizes: [28,29,30,31,32,33,34,35,36], image: "https://via.placeholder.com/150/c026d3/ffffff?text=Inf+Branco" },
-    { id: "68051009", name: "Sandália Salto Infantil Tiras Laço Preto", sizes: [28,29,30,31,32,33,34,35,36], image: "https://via.placeholder.com/150/c026d3/ffffff?text=Inf+Preto" },
-    { id: "68051041", name: "Sandália Salto Infantil Tiras Laço (Rosa)", sizes: [28,29,30,31,32,33,34,35,36], image: "https://via.placeholder.com/150/c026d3/ffffff?text=Inf+Rosa" },
-    { id: "135003172", name: "Scarpin Salto Baixo Verniz Bico Fino (Preto)", sizes: [34,35,36,37,38,39,40], image: "https://via.placeholder.com/150/c026d3/ffffff?text=Scarpin+Pr" },
-    { id: "169021368", name: "Tênis Feminino Casual Colorido Refletivo", sizes: [28,29,30,31,32,33,34,35,36], image: "https://via.placeholder.com/150/c026d3/ffffff?text=Refletivo" },
-    { id: "155095009", name: "Tênis Menina Fashion Unicórnio Preto", sizes: [28,29,30,31,32,33,34,35,36], image: "https://via.placeholder.com/150/c026d3/ffffff?text=Unic+Pr" },
-    { id: "118005041", name: "Sapatilha Bico Fino Animal Print Nude", sizes: [34,35,36,37,38,39,40], image: "https://via.placeholder.com/150/c026d3/ffffff?text=Nude" },
-    { id: "135003198", name: "Scarpin Salto Baixo Verniz Bico Fino (Off White)", sizes: [34,35,36,37,38,39,40], image: "https://via.placeholder.com/150/c026d3/ffffff?text=Scarpin+Off" },
-    { id: "169012285", name: "Tênis Infantil Cano Alto Casual Strass Dourado", sizes: [28,29,30,31,32,33,34,35,36], image: "https://via.placeholder.com/150/c026d3/ffffff?text=Tenis+Do" },
-    { id: "116032121", name: "Sandália Espiral Salto Fino Strass Off White", sizes: [34,35,36,37,38,39,40], image: "https://via.placeholder.com/150/c026d3/ffffff?text=Espiral" },
-    { id: "147006121", name: "Sandália Salto Médio Grosso Tiras Cruzadas", sizes: [34,35,36,37,38,39,40], image: "https://via.placeholder.com/150/c026d3/ffffff?text=Cruzadas" },
-    { id: "162006286", name: "Sandália Feminina Salto Bloco Tiras Elegantes", sizes: [34,35,36,37,38,39,40], image: "https://via.placeholder.com/150/c026d3/ffffff?text=Bloco" },
-    { id: "155095001", name: "Tênis Menina Fashion Unicórnio Branco", sizes: [28,29,30,31,32,33,34,35,36], image: "https://via.placeholder.com/150/c026d3/ffffff?text=Unic+Br" },
-    { id: "135003001", name: "Scarpin Salto Baixo Verniz Bico Fino", sizes: [34,35,36,37,38,39,40], image: "https://via.placeholder.com/150/c026d3/ffffff?text=Scarpin" },
-    { id: "155095041", name: "Tênis Menina Fashion Unicórnio Rosa", sizes: [28,29,30,31,32,33,34,35,36], image: "https://via.placeholder.com/150/c026d3/ffffff?text=Unic+Ro" },
-    { id: "135003383", name: "Scarpin Salto Baixo Verniz Bico Fino (Branco)", sizes: [34,35,36,37,38,39,40], image: "https://via.placeholder.com/150/c026d3/ffffff?text=Scarpin+Br" }
-];
-
-// Estado da Aplicação
-const state = {
-    multiplier: 1,
-    inputs: {} 
-};
-
-// Elementos DOM
-const container = document.getElementById('skus-container');
-const multiplierInput = document.getElementById('order-multiplier');
-const grandTotalEl = document.getElementById('grand-total');
-const printBtn = document.getElementById('btn-print');
-const printDateEl = document.getElementById('print-date');
-const printMultiplierEl = document.getElementById('print-multiplier');
-
-// Inicialização
-function init() {
-    renderSkus();
-    setupEventListeners();
-    updateDate();
+/* Variáveis Minimalistas */
+:root {
+    --primary: #c026d3;
+    --primary-light: #fdf4ff;
+    --bg-main: #fafafa;
+    --card-bg: #ffffff;
+    --text-dark: #111827;
+    --text-muted: #6b7280;
+    --border-soft: #e5e7eb;
+    --border-focus: #d1d5db;
 }
 
-// Renderizar os cartões na tela dinamicamente
-function renderSkus() {
-    container.innerHTML = '';
-
-    skusData.forEach(sku => {
-        if (!state.inputs[sku.id]) state.inputs[sku.id] = {};
-
-        const card = document.createElement('div');
-        card.className = 'sku-card';
-
-        let sizesHTML = '';
-        sku.sizes.forEach(size => {
-            sizesHTML += `
-                <div class="size-item">
-                    <div class="size-label">${size}</div>
-                    <input type="number" 
-                           class="size-input" 
-                           data-sku="${sku.id}" 
-                           data-size="${size}" 
-                           min="0" 
-                           placeholder="0">
-                    <div class="size-result" id="res-${sku.id}-${size}">0</div>
-                </div>
-            `;
-        });
-
-        card.innerHTML = `
-            <div class="sku-header">
-                <img src="${sku.image}" alt="Foto SKU" class="sku-image">
-                <div class="sku-info">
-                    <h3>Base SKU: ${sku.id}</h3>
-                    <p>${sku.name}</p>
-                </div>
-            </div>
-            <div class="size-grid">
-                ${sizesHTML}
-            </div>
-            <div class="sku-total">
-                Total do Item: <span id="total-${sku.id}">0</span> pares
-            </div>
-        `;
-
-        container.appendChild(card);
-    });
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
 }
 
-// Configuração de Eventos
-function setupEventListeners() {
-    // Multiplicador global
-    multiplierInput.addEventListener('input', (e) => {
-        let val = parseInt(e.target.value);
-        if (isNaN(val) || val < 1) val = 1;
-        state.multiplier = val;
-        printMultiplierEl.textContent = val;
-        recalculateAll();
-    });
-
-    // Delegando evento de input para a grid inteira (melhor performance)
-    container.addEventListener('input', (e) => {
-        if (e.target.classList.contains('size-input')) {
-            const skuId = e.target.dataset.sku;
-            const size = e.target.dataset.size;
-            const value = parseInt(e.target.value) || 0;
-
-            state.inputs[skuId][size] = value;
-            recalculateAll();
-        }
-    });
-
-    // Impressão
-    printBtn.addEventListener('click', () => {
-        window.print();
-    });
+body {
+    background-color: var(--bg-main);
+    color: var(--text-dark);
+    -webkit-font-smoothing: antialiased;
 }
 
-// Lógica de cálculo matemático
-function recalculateAll() {
-    let grandTotal = 0;
-
-    skusData.forEach(sku => {
-        let skuTotal = 0;
-
-        sku.sizes.forEach(size => {
-            const baseQty = state.inputs[sku.id]?.[size] || 0;
-            const calculatedQty = baseQty * state.multiplier;
-            
-            document.getElementById(`res-${sku.id}-${size}`).textContent = calculatedQty;
-            skuTotal += calculatedQty;
-        });
-
-        document.getElementById(`total-${sku.id}`).textContent = skuTotal;
-        grandTotal += skuTotal;
-    });
-
-    grandTotalEl.textContent = grandTotal;
+/* Cabeçalho */
+.top-bar {
+    background-color: var(--card-bg);
+    padding: 1.2rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--border-soft);
 }
 
-// Formatar data atual
-function updateDate() {
-    const hoje = new Date();
-    printDateEl.textContent = hoje.toLocaleDateString('pt-BR');
+.logo h1 {
+    font-size: 1.4rem;
+    color: var(--text-dark);
 }
 
-// Start
-init();
+.logo .subtitle {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+}
+
+.btn-primary {
+    background-color: var(--text-dark);
+    color: white;
+    border: none;
+    padding: 0.6rem 1.2rem;
+    font-size: 0.95rem;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+.btn-primary:hover {
+    background-color: var(--primary);
+}
+
+/* Barra de Ferramentas (Pesquisa e Abas) */
+.toolbar {
+    max-width: 1200px;
+    margin: 2rem auto 1rem;
+    padding: 0 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.search-container {
+    position: relative;
+    max-width: 500px;
+}
+
+.search-icon {
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--text-muted);
+}
+
+#search-input {
+    width: 100%;
+    padding: 0.8rem 1rem 0.8rem 2.5rem;
+    border: 1px solid var(--border-focus);
+    border-radius: 8px;
+    font-size: 1rem;
+    outline: none;
+    transition: 0.2s;
+}
+
+#search-input:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px var(--primary-light);
+}
+
+.category-tabs {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    border-bottom: 1px solid var(--border-soft);
+    padding-bottom: 0.5rem;
+}
+
+.tab-btn {
+    background: transparent;
+    border: none;
+    padding: 0.5rem 1rem;
+    font-size: 0.95rem;
+    color: var(--text-muted);
+    cursor: pointer;
+    border-radius: 20px;
+    transition: 0.2s;
+}
+
+.tab-btn:hover {
+    background-color: var(--border-soft);
+    color: var(--text-dark);
+}
+
+.tab-btn.active {
+    background-color: var(--primary-light);
+    color: var(--primary);
+    font-weight: 600;
+}
+
+/* Resumo */
+.summary-section {
+    max-width: 1200px;
+    margin: 0 auto 1.5rem;
+    padding: 0 1rem;
+    text-align: right;
+    font-size: 1.2rem;
+    color: var(--text-muted);
+}
+
+.summary-section strong {
+    color: var(--primary);
+    font-size: 1.5rem;
+}
+
+/* Grid de Produtos */
+.skus-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(450px, 1fr));
+    gap: 1.5rem;
+    max-width: 1200px;
+    margin: 0 auto 3rem;
+    padding: 0 1rem;
+}
+
+/* Cartão Minimalista */
+.sku-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border-soft);
+    border-radius: 12px;
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.sku-card:hover {
+    border-color: var(--border-focus);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+}
+
+.sku-header {
+    display: flex;
+    gap: 1.2rem;
+    align-items: center;
+}
+
+.sku-image {
+    width: 70px;
+    height: 70px;
+    object-fit: cover;
+    border-radius: 8px;
+    background-color: var(--bg-main);
+}
+
+.sku-info h3 {
+    font-size: 1.1rem;
+    color: var(--text-dark);
+    margin-bottom: 0.2rem;
+}
+
+.sku-info p {
+    color: var(--text-muted);
+    font-size: 0.85rem;
+    line-height: 1.3;
+}
+
+/* Grade de Inputs Minimalista */
+.size-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.size-item {
+    display: flex;
+    flex-direction: column;
+    width: 45px;
+}
+
+.size-label {
+    text-align: center;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin-bottom: 0.2rem;
+}
+
+.size-input {
+    width: 100%;
+    border: 1px solid var(--border-soft);
+    border-radius: 4px;
+    padding: 0.4rem 0;
+    text-align: center;
+    outline: none;
+    font-size: 0.95rem;
+    transition: 0.2s;
+}
+
+.size-input:focus {
+    border-color: var(--primary);
+    background-color: var(--primary-light);
+}
+
+/* Rodapé do Cartão (Cálculos e Botão) */
+.sku-footer {
+    margin-top: auto;
+    padding-top: 1.5rem;
+    border-top: 1px dashed var(--border-soft);
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.calc-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--bg-main);
+    padding: 0.8rem 1rem;
+    border-radius: 8px;
+    font-size: 0.95rem;
+}
+
+.calc-row .multiplier-input {
+    width: 60px;
+    padding: 0.3rem;
+    text-align: center;
+    border: 1px solid var(--border-focus);
+    border-radius: 4px;
+    margin: 0 0.5rem;
+    font-weight: bold;
+}
+
+.calc-row .final-total {
+    color: var(--primary);
+    font-size: 1.1rem;
+}
+
+.btn-print-single {
+    width: 100%;
+    background: transparent;
+    border: 1px solid var(--border-focus);
+    color: var(--text-dark);
+    padding: 0.6rem;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: 0.2s;
+}
+
+.btn-print-single:hover {
+    border-color: var(--primary);
+    color: var(--primary);
+}
+
+.only-print { display: none; }
+
+/* ===== REGRAS DE IMPRESSÃO ===== */
+@media print {
+    @page { margin: 1cm; size: A4 portrait; }
+    
+    body { background: white; }
+    .no-print { display: none !important; }
+    
+    .only-print {
+        display: block;
+        margin-bottom: 2rem;
+        border-bottom: 2px solid #000;
+        padding-bottom: 1rem;
+    }
+
+    .skus-grid {
+        display: block;
+        padding: 0;
+    }
+
+    .sku-card {
+        border: 1px solid #000;
+        margin-bottom: 1.5rem;
+        page-break-inside: avoid;
+    }
+
+    /* Se estiver imprimindo um item único, oculta os outros */
+    body.printing-single .sku-card:not(.print-active) {
+        display: none !important;
+    }
+
+    .size-input {
+        border: none;
+        border-bottom: 1px solid #000;
+        border-radius: 0;
+    }
+
+    .calc-row {
+        background: transparent;
+        border: 1px solid #000;
+    }
+
+    .multiplier-input {
+        border: none;
+        border-bottom: 1px solid #000;
+    }
+}
