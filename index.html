@@ -3,36 +3,47 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sistema de Pedidos - Domidona</title>
+    <title>Gestão 360 Domidona - Pedidos</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <!-- Cabeçalho Principal (Oculto na impressão) -->
     <header class="top-bar no-print">
         <div class="logo">
-            <h1>Gestão 360 Domidona - Pedidos</h1>
+            <h1>Gestão 360 Domidona</h1>
+            <span class="subtitle">Módulo de Pedidos de Compra</span>
         </div>
-        <div class="global-controls">
-            <div class="control-group">
-                <label for="order-multiplier">Quantidade de Pedidos:</label>
-                <input type="number" id="order-multiplier" value="1" min="1">
-            </div>
-            <button id="btn-print" class="btn-primary">🖨️ IMPRIMIR PEDIDO</button>
-        </div>
+        <button id="btn-print-all" class="btn-primary">🖨️ IMPRIMIR TODOS VISÍVEIS</button>
     </header>
 
+    <!-- Barra de Ferramentas: Pesquisa e Categorias (Oculto na impressão) -->
+    <section class="toolbar no-print">
+        <div class="search-container">
+            <span class="search-icon">🔍</span>
+            <input type="text" id="search-input" placeholder="Pesquisar por SKU ou Nome da referência...">
+        </div>
+        
+        <!-- As abas serão injetadas aqui pelo JavaScript -->
+        <div class="category-tabs" id="category-tabs"></div>
+    </section>
+
+    <!-- Cabeçalho exclusivo para Impressão -->
     <div class="print-header only-print">
         <h1>Pedido de Compra - Domidona</h1>
-        <p>Data: <span id="print-date"></span></p>
-        <p>Multiplicador de Pedidos: <span id="print-multiplier">1</span>x</p>
+        <p>Data de emissão: <span id="print-date"></span></p>
     </div>
 
+    <!-- Container Principal -->
     <main>
+        <!-- Resumo Geral -->
         <section class="summary-section">
-            <h2>Total Geral do Pedido: <span id="grand-total">0</span> pares</h2>
+            <p>Total Geral Selecionado: <strong id="grand-total">0</strong> pares</p>
         </section>
 
+        <!-- Container onde os SKUs serão renderizados -->
         <section id="skus-container" class="skus-grid">
-            </section>
+            <!-- Os cartões de SKU serão injetados aqui -->
+        </section>
     </main>
 
     <script src="script.js"></script>
