@@ -5,45 +5,49 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gestão 360 Domidona - Pedidos</title>
     <link rel="stylesheet" href="style.css">
+    <!-- Fonte moderna e minimalista do Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
-    <!-- Cabeçalho Principal (Oculto na impressão) -->
+    <!-- Cabeçalho Futurista/Glassmorphism -->
     <header class="top-bar no-print">
-        <div class="logo">
-            <h1>Gestão 360 Domidona</h1>
-            <span class="subtitle">Módulo de Pedidos de Compra</span>
+        <div class="brand">
+            <!-- COLOQUE O LINK DA LOGO DA DOMIDONA AQUI NO 'src' -->
+            <img src="https://via.placeholder.com/150x40/ffffff/c026d3?text=LOGO+DOMIDONA" alt="Domidona" class="brand-logo">
+            <div class="brand-text">
+                <h1>Gestão 360</h1>
+                <span class="badge">Módulo Compras</span>
+            </div>
         </div>
-        <button id="btn-print-all" class="btn-primary">🖨️ IMPRIMIR TODOS VISÍVEIS</button>
+        <button id="btn-print-all" class="btn-modern">Imprimir Visíveis 🖨️</button>
     </header>
 
-    <!-- Barra de Ferramentas: Pesquisa e Categorias (Oculto na impressão) -->
+    <!-- Barra de Ferramentas -->
     <section class="toolbar no-print">
         <div class="search-container">
-            <span class="search-icon">🔍</span>
-            <input type="text" id="search-input" placeholder="Pesquisar por SKU ou Nome da referência...">
+            <svg class="search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+            <input type="text" id="search-input" placeholder="Pesquisar SKU ou modelo...">
         </div>
-        
-        <!-- As abas serão injetadas aqui pelo JavaScript -->
         <div class="category-tabs" id="category-tabs"></div>
     </section>
 
-    <!-- Cabeçalho exclusivo para Impressão -->
+    <!-- Cabeçalho Impressão -->
     <div class="print-header only-print">
-        <h1>Pedido de Compra - Domidona</h1>
-        <p>Data de emissão: <span id="print-date"></span></p>
+        <img src="https://via.placeholder.com/150x40/ffffff/000000?text=LOGO+DOMIDONA" alt="Domidona" style="height: 30px; margin-bottom: 10px;">
+        <h1>Pedido de Compra</h1>
+        <p>Emissão: <span id="print-date"></span></p>
     </div>
 
     <!-- Container Principal -->
     <main>
-        <!-- Resumo Geral -->
         <section class="summary-section">
-            <p>Total Geral Selecionado: <strong id="grand-total">0</strong> pares</p>
+            <div class="summary-box">
+                <span class="summary-label">Total Geral</span>
+                <strong id="grand-total" class="summary-value">0</strong>
+            </div>
         </section>
 
-        <!-- Container onde os SKUs serão renderizados -->
-        <section id="skus-container" class="skus-grid">
-            <!-- Os cartões de SKU serão injetados aqui -->
-        </section>
+        <section id="skus-container" class="skus-grid"></section>
     </main>
 
     <script src="script.js"></script>
