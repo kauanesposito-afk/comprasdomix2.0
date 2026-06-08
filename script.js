@@ -1,37 +1,27 @@
-// DADOS DOS PRODUTOS (Extraídos automaticamente e filtrados por SKUs base)
+// DADOS DOS PRODUTOS
 const skusData = [
-    { id: "128006", name: "Mule Feminino Salto Taça Bico Fino Elegante", sizes: [34,35,36,37,38,39,40], image: "" },
-    { id: "116060", name: "Tamanco Feminino em Vinil Salto Baixo Bico Quadrado", sizes: [34,35,36,37,38,39,40], image: "" },
-    { id: "179004", name: "Bota Feminina Cano Curto Bico Fino Salto Grosso Napa Madri", sizes: [34,35,36,37,38,39,40], image: "" },
-    { id: "116059", name: "Tamanco de Dedo Domidona Bico Quadrado Salto Fino", sizes: [34,35,36,37,38,39,40], image: "" },
-    { id: "237003", name: "Bota Cano Curto Salto Fino Baixo Kitten Heel Metalizado", sizes: [34,35,36,37,38,39,40], image: "" },
-    { id: "169101", name: "Tênis Infantil Menina Fashion Brilho Metalizado Casual", sizes: [28,29,30,31,32,33,34,35,36], image: "" },
-    { id: "116045", name: "Sandália Feminina Elegante Tira Única e Fechamento no Tornozelo", sizes: [34,35,36,37,38,39,40], image: "" },
-    { id: "218010", name: "Coturno Feminino Cano Curto Solado Tratorado Zíper", sizes: [34,35,36,37,38,39,40], image: "" },
-    { id: "118017", name: "Sapatilha Feminina Slingback Laço Com Aplique Metalizado", sizes: [34,35,36,37,38,39,40], image: "" },
-    { id: "257006", name: "Rasteirinha Slingback Flat Pedrarias Brilho Bico Quadrado", sizes: [34,35,36,37,38,39,40], image: "" },
-    { id: "257007", name: "Sandália Feminina Rasteira Pedrarias Tira No Tornozelo", sizes: [34,35,36,37,38,39,40], image: "" },
-    { id: "116058", name: "Sandália Feminina Salto Alto Grosso Cromado Tiras Com Tachas", sizes: [34,35,36,37,38,39,40], image: "" },
-    { id: "116057", name: "Tamanco de Dedo Domidona Tiras Finas de Strass Salto Médio", sizes: [34,35,36,37,38,39,40], image: "" },
-    { id: "257003", name: "Rasteira Gladiadora Tiras Finas Com Tacha Metálicos", sizes: [34,35,36,37,38,39,40], image: "" },
-    { id: "257004", name: "Rasteirinha Flat De Dedo Tiras Strass Plana Bico Quadrado", sizes: [34,35,36,37,38,39,40], image: "" },
-    { id: "257001", name: "Rasteira Feminina Slide Tira Larga Bico Quadrado", sizes: [34,35,36,37,38,39,40], image: "" },
-    { id: "257002", name: "Rasteirinha Flat De Dedo Laço Metálico Plana Bico Quadrado", sizes: [34,35,36,37,38,39,40], image: "" },
-    { id: "195005", name: "Sandália Salto Alto Grosso Tiras Finas Com ABS Metalizado", sizes: [34,35,36,37,38,39,40], image: "" },
-    { id: "195006", name: "Sandália Salto Bloco Tiras Cruzadas Com Fivela Bico Quadrado", sizes: [34,35,36,37,38,39,40], image: "" },
-    { id: "147015", name: "Sandália Salto Alto Bloco Bico Quadrado Com Laço ABS Metalizado", sizes: [34,35,36,37,38,39,40], image: "" },
-    { id: "147016", name: "Sandália Feminina Animal Print Salto Bloco Tira Única Com Fivela", sizes: [34,35,36,37,38,39,40], image: "" },
-    { id: "239005", name: "Tênis Domidona Feminino Street Urbano Cano Baixo Sola Alta", sizes: [34,35,36,37,38,39,40], image: "" },
-    { id: "116055", name: "Sandália Feminina Salto Bloco Dourado Bico Quadrado Tira Com Fivela", sizes: [34,35,36,37,38,39,40], image: "" },
-    { id: "116056", name: "Tamanco Verniz Molhado Salto Dourado Bico Quadrado", sizes: [34,35,36,37,38,39,40], image: "" },
-    { id: "116054", name: "Sandália Feminina Salto Alto Taça Dourado Tira Fina Com Strass", sizes: [34,35,36,37,38,39,40], image: "" },
-    { id: "118021", name: "Sapatilha Feminina Camurça Animal Print Vaca Bico Fino", sizes: [34,35,36,37,38,39,40], image: "" },
-    { id: "247001", name: "Sandália Feminina Anabela Com Tachas Salto Plataforma Madeira", sizes: [34,35,36,37,38,39,40], image: "" },
-    { id: "248001", name: "Sandália Feminina Salto Grosso Bloco Madeira Tiras Com Tachas", sizes: [34,35,36,37,38,39,40], image: "" },
-    { id: "185003", name: "Tênis Feminino Domidona Estilo Streetwear Cano Baixo Casual", sizes: [34,35,36,37,38,39,40], image: "" },
-    { id: "118018", name: "Sapatilha Verniz Bico Fino Tiras Duplas Fivela Oval Estilo Boho", sizes: [34,35,36,37,38,39,40], image: "" },
-    { id: "118019", name: "Sapatilha Feminina Bico Fino Laço Com ABS Oval Metalizado", sizes: [34,35,36,37,38,39,40], image: "" },
-    { id: "118020", name: "Sapatilha Slingback Fivela Bico Fino Laço Delicado", sizes: [34,35,36,37,38,39,40], image: "" }
+    { id: "118015125", name: "Sapatilha Feminina Slingback Bico Fino Verniz Marsala", sizes: [34,35,36,37,38,39,40], image: "marsala.png" },
+    { id: "118015197", name: "Sapatilha Feminina Slingback Bico Fino Verniz Off White", sizes: [34,35,36,37,38,39,40], image: "offwhite.png" },
+    { id: "118005033", name: "Sapatilha Bico Fino Animal Print Dourado", sizes: [34,35,36,37,38,39,40], image: "croco.png" },
+    { id: "118005009", name: "Sapatilha Bico Fino Animal Print Preto", sizes: [34,35,36,37,38,39,40], image: "crocopreta.png" },
+    { id: "68051033", name: "Sandália Salto Infantil Tiras Laço Ouro Light", sizes: [28,29,30,31,32,33,34,35,36], image: "68ouro.png" },
+    { id: "169012195", name: "Tênis Infantil Cano Alto Casual Strass Preto", sizes: [28,29,30,31,32,33,34,35,36], image: "casual.png" },
+    { id: "68051001", name: "Sandália Salto Infantil Tiras Laço Branco", sizes: [28,29,30,31,32,33,34,35,36], image: "68051branco.png" },
+    { id: "68051009", name: "Sandália Salto Infantil Tiras Laço Preto", sizes: [28,29,30,31,32,33,34,35,36], image: "68051preto.png" },
+    { id: "68051041", name: "Sandália Salto Infantil Tiras Laço (Rosa)", sizes: [28,29,30,31,32,33,34,35,36], image: "68051.png" },
+    { id: "135003172", name: "Scarpin Salto Baixo Verniz Bico Fino (Preto)", sizes: [34,35,36,37,38,39,40], image: "135preto.png" },
+    { id: "169021368", name: "Tênis Feminino Casual Colorido Refletivo", sizes: [28,29,30,31,32,33,34,35,36], image: "169.png" },
+    { id: "155095009", name: "Tênis Menina Fashion Unicórnio Preto", sizes: [28,29,30,31,32,33,34,35,36], image: "unicornio.png" },
+    { id: "118005041", name: "Sapatilha Bico Fino Animal Print Nude", sizes: [34,35,36,37,38,39,40], image: "118nude.png" },
+    { id: "135003198", name: "Scarpin Salto Baixo Verniz Bico Fino Nude", sizes: [34,35,36,37,38,39,40], image: "135nude.png" },
+    { id: "169012285", name: "Tênis Infantil Cano Alto Casual Strass Dourado", sizes: [28,29,30,31,32,33,34,35,36], image: "169ouro.png" },
+    { id: "116032121", name: "Sandália Espiral Salto Fino Strass Off White", sizes: [34,35,36,37,38,39,40], image: "116off.png" },
+    { id: "147006121", name: "Sandália Salto Médio Grosso Tiras Cruzadas", sizes: [34,35,36,37,38,39,40], image: "147off.png" },
+    { id: "162006286", name: "Sandália Feminina Salto Bloco Tiras Elegantes", sizes: [34,35,36,37,38,39,40], image: "162ouro.png" },
+    { id: "155095001", name: "Tênis Menina Fashion Unicórnio Branco", sizes: [28,29,30,31,32,33,34,35,36], image: "unibranco.png" },
+    { id: "135003001", name: "Scarpin Salto Baixo Verniz Bico Fino", sizes: [34,35,36,37,38,39,40], image: "135off.png" },
+    { id: "155095041", name: "Tênis Menina Fashion Unicórnio Rosa", sizes: [28,29,30,31,32,33,34,35,36], image: "155rosa.png" },
+    { id: "135003383", name: "Scarpin Salto Baixo Verniz Bico Fino Prata", sizes: [34,35,36,37,38,39,40], image: "135prata.png" }
 ];
 
 // Estado Principal
@@ -50,9 +40,6 @@ skusData.forEach(sku => {
     else if (nomeLower.includes('sandália')) cat = 'Sandálias';
     else if (nomeLower.includes('scarpin')) cat = 'Scarpins';
     else if (nomeLower.includes('tênis')) cat = 'Tênis';
-    else if (nomeLower.includes('bota') || nomeLower.includes('coturno')) cat = 'Botas';
-    else if (nomeLower.includes('tamanco') || nomeLower.includes('rasteira')) cat = 'Tamancos/Rasteiras';
-    else if (nomeLower.includes('mule')) cat = 'Mules';
     
     sku.category = cat;
     if (!categories.includes(cat)) categories.push(cat);
@@ -119,12 +106,11 @@ function renderSkus() {
             `;
         });
 
-        // A MÁGICA ESTÁ AQUI: Se não tiver imagem, ele procura o arquivo "SKU.jpg"
-        const imgSrc = sku.image ? sku.image : `${sku.id}.jpg`;
+        const imgSrc = sku.image ? sku.image : 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7';
 
         card.innerHTML = `
             <div class="sku-header">
-                <img src="${imgSrc}" class="sku-image" alt="Produto" onerror="this.src='data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7'">
+                <img src="${imgSrc}" class="sku-image" alt="Produto">
                 <div class="sku-info">
                     <h3>SKU: ${sku.id}</h3>
                     <p>${sku.name}</p>
@@ -149,6 +135,7 @@ function renderSkus() {
                 <strong>Qtd. de Pedidos passados:</strong> <span id="print-mult-${sku.id}">1</span>x<br>
                 <strong style="font-size: 1.1rem;">TOTAL GERAL DESTE ITEM: <span id="print-total-${sku.id}">0</span> pares</strong>
                 
+                <!-- Quadrados de data -->
                 <div id="print-squares-${sku.id}"></div>
             </div>
         `;
